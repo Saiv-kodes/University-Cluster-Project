@@ -9,7 +9,7 @@ const data:Job[]=[
     discipline:"Mechanical engineering",
     description:"You will do research and more research",
     professor:"Amitabh Bachhan",
-    button:"Open"
+    
   },
   {
     id:2,
@@ -17,7 +17,7 @@ const data:Job[]=[
     discipline:"Mechanical engineering",
     description:"You will do research and more research",
     professor:"Amitabh Bachhan",
-    button:"Open"
+    
   },
   {
     id:3,
@@ -25,7 +25,7 @@ const data:Job[]=[
     discipline:"Mechanical engineering",
     description:"You will do research and more research",
     professor:"Amitabh Bachhan",
-    button:"Open"
+    
   },
 ]
 export default function Careers(){

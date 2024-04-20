@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 import { CardTitle } from "@/components/ui/card";
 
 export interface Job{
-  id:React.ReactNode;
-  vacancy:React.ReactNode;
-  description:React.ReactNode;
-  professor:React.ReactNode;
-  discipline:React.ReactNode;
-  button:React.ReactNode;
+  id:number;
+  vacancy:string;
+  description:string;
+  professor:string;
+  discipline:string;
+
 }
 
 
@@ -44,7 +44,7 @@ export const columns: ColumnDef<Job>[] = [
     accessorKey: "button",
     header: ()=><div className="font-bold"></div> ,
     cell:({row})=>{
-      const button:React.ReactNode=row.getValue("button");
+
       const description:React.ReactNode=row.getValue("description");
       const title:React.ReactNode=row.getValue("vacancy");
       const professor:React.ReactNode=row.getValue("professor");
@@ -52,7 +52,7 @@ export const columns: ColumnDef<Job>[] = [
       
       return <Sheet >
         <SheetTrigger className="w-[60px] h-[45px] bg-black text-white rounded-sm">
-          {button}
+          View
         </SheetTrigger>
         <SheetContent className="sm:max-w-none sm:w-3/4 w-full flex flex-col items-center">
           <CardTitle className="w-full text-center">{title}</CardTitle>

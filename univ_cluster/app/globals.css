@@ -77,9 +77,8 @@
 }
 
 .oui{
-  background: rgb(247,247,247);
-  background: radial-gradient(circle, rgba(247,247,247,1) 0%, rgba(135,192,255,1) 78%, rgba(247,247,247,1) 100%);
-}
+  background: rgb(17,9,232);
+  background: radial-gradient(circle, rgba(17,9,232,0.31985294117647056) 0%, rgba(50,154,247,0.19100140056022408) 50%, rgba(0,181,228,0.23301820728291311) 100%);}
 
 .container img {
   height: 100%;

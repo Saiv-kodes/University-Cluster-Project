@@ -1,29 +1,16 @@
 import { NavOption } from "@/components/navOption";
 import { DataTable } from "./Datable";
 import { columns,Instrument } from "./columns";
-import uma from "@/images/reacticon.png"
+import prisma from "@/lib/prisma";
 
-const data:Instrument[]=[
-  {
-    id:1,
-    instrument:"Big Brain",
-    image:uma,
-    description:"Shanivar raati mainu neen nai aundi"
-  },
-  {
-    id:2,
-    instrument:"Big Brain",
-    image:uma,
-    description:"Shanivar raati mainu neen nai aundi"
-  },
-  {
-    id:3,
-    instrument:"Big Brain",
-    image:uma,
-    description:"Shanivar raati mainu neen nai aundi"
-  }
-]
-export default function SDP(){
+async function getPosts(){
+  const data = await prisma.instrument.findMany()
+  return data;
+}
+
+
+export default async function SDP(){
+  const data=await getPosts();
   return<>
     <NavOption/>
     <section>

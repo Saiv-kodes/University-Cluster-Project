@@ -1,0 +1,43 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Proj {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
+  discipline  String
+  professor   String
+  imagePath   String   // Store the path or URL of the image
+}
+
+model Job {
+  id          Int       @id @default(autoincrement())
+  vacancy     String
+  description String
+  professor   String
+  discipline  String
+}
+
+model Instrument {
+  id          Int     @id @default(autoincrement())
+  instrument  String
+  description String
+  image       String
+}
+
+model Program {
+  id          Int    @id @default(autoincrement())
+  program     String
+  description String
+  group       String
+  organiser   String
+}
