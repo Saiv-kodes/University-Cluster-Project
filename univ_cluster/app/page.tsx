@@ -4,12 +4,11 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import aiims from "../images/aiims.jpg";
 import iit from "../images/iitjammu.jpeg"
 import bgsbu from "../images/bgsbu.jpeg";
-import central from "../images/central.jpeg";
 import iim from "../images/iimjammu.jpeg"
 import Autoplay from "embla-carousel-autoplay"
 import Image from "next/image";
 import { NavOption } from "@/components/navOption";
-import { BentoGrid,BentoGridItem } from "../components/ui/bento"
+
 import {
   IconArrowWaveRightUp,
   IconBoxAlignRightFilled,

@@ -16,7 +16,7 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import { Select,SelectContent,SelectItem,SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export const images=[{first:"BGSBU",second:bgsbu},{first:"SMVDU",second:smvdu},{first:"CSIR-IIIM",second:iit},{first:"University Of Jammu",second:uoj},{first:"IIT Jammu",second:iit},{first:"AIIMS Jammu",second:aiims},{first:"IIM Jammu",second:iim},,{first:"SKUAST-Jammu",second:iit},{first:"GMC Jammu",second:iit},{first:"Cluster University of Jammu",second:iit},{first:"Central University of Jammu",second:iit}];
+const images=[{first:"BGSBU",second:bgsbu},{first:"SMVDU",second:smvdu},{first:"CSIR-IIIM",second:iit},{first:"University Of Jammu",second:uoj},{first:"IIT Jammu",second:iit},{first:"AIIMS Jammu",second:aiims},{first:"IIM Jammu",second:iim},,{first:"SKUAST-Jammu",second:iit},{first:"GMC Jammu",second:iit},{first:"Cluster University of Jammu",second:iit},{first:"Central University of Jammu",second:iit}];
 export default function Login() {
   const [activeInst,setActiveInst]=useState<string>();
   return (
