@@ -3,12 +3,7 @@
 import { NavOption } from "@/components/navOption";
 import Image from "next/image"
 import Link from "next/link"
-import aiims from "@/images/logos/aiimslogo.png"
-import iit from "@/images/logos/iitlogo.png"
-import iim from "@/images/logos/iimlogo.png"
-import bgsbu from "@/images/logos/bgsbulogo.jpg"
-import smvdu from "@/images/logos/smvdulogo.jpg"
-import uoj from "@/images/logos/UOJlogo.jpg"
+import {images} from "@/app/images"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -16,7 +11,6 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import { Select,SelectContent,SelectItem,SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export const images=[{first:"BGSBU",second:bgsbu},{first:"SMVDU",second:smvdu},{first:"CSIR-IIIM",second:iit},{first:"University Of Jammu",second:uoj},{first:"IIT Jammu",second:iit},{first:"AIIMS Jammu",second:aiims},{first:"IIM Jammu",second:iim},,{first:"SKUAST-Jammu",second:iit},{first:"GMC Jammu",second:iit},{first:"Cluster University of Jammu",second:iit},{first:"Central University of Jammu",second:iit}];
 export default function Login() {
   const [activeInst,setActiveInst]=useState<string>();
   return (

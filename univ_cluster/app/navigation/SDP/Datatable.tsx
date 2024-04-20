@@ -22,7 +22,7 @@ import { Input } from "@/components/ui/input"
 
 import { Card, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger,SelectValue } from "@/components/ui/select";
-import { images } from "@/app/login/page";
+import { images } from "@/app/images";
 import { useState } from "react"
 
 interface DataTableProps<TData, TValue> {
