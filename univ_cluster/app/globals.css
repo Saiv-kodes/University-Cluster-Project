@@ -104,6 +104,10 @@
   }
  
 }
+.logos{
+  background: rgb(17,9,232);
+  background: linear-gradient(0deg, rgba(17,9,232,1) 0%, rgba(50,154,247,1) 50%, rgba(0,65,228,1) 100%);
+}
 
 @layer base {
   * {

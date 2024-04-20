@@ -1,5 +1,4 @@
 "use client"
-import MainNav from "@/components/mainNav";
 import { Card, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import aiims from "../images/aiims.jpg";

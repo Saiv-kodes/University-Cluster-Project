@@ -50,7 +50,7 @@ export function NavOption() {
                     Instruments
                   </Link>
                   <Link
-                    href="#"
+                    href="/navigation/runningProjects"
                     className="text-muted-foreground hover:text-foreground"
                   >
                     Running Projects
@@ -108,31 +108,31 @@ export function NavOption() {
             Home
           </Link>
           <Link
-            href="#"
+            href="/navigation/runningProjects"
             className="text-muted-foreground transition-colors hover:text-foreground text-center"
           >
             Running Projects
           </Link>
           <Link
-            href="#"
+            href="/navigation/SDP"
             className="text-muted-foreground transition-colors hover:text-foreground text-center"
           >
             Skill Development Program
           </Link>
           <Link
-            href="#"
+            href="/navigation/Instruments"
             className="text-muted-foreground transition-colors hover:text-foreground text-center"
           >
             Instruments
           </Link>
           <Link
-            href="#"
+            href="/navigation/careers"
             className="text-muted-foreground transition-colors hover:text-foreground text-center"
           >
             Careers
           </Link>
           <Link
-            href="#"
+            href="/navigation/specialisations"
             className="text-muted-foreground transition-colors hover:text-foreground text-center"
           >
             Specialisations
