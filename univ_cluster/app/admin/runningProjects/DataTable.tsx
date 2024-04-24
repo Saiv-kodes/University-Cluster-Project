@@ -24,7 +24,7 @@ import { Card, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger,SelectValue } from "@/components/ui/select";
 import { images } from "@/app/images";
 import { useState } from "react"
-import { institutes } from "../institutes"
+import { institutes } from "@/app/navigation/institutes"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -129,7 +129,6 @@ export function DataTable<TData, TValue>({
           ))}
         </TableHeader>
         <TableBody>
-
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row,idx) => (
               <TableRow
@@ -150,11 +149,6 @@ export function DataTable<TData, TValue>({
               </TableCell>
             </TableRow>
           )}
-          <TableRow className={`${id===-1?"hidden":""}`}>
-            <TableCell>
-              
-            </TableCell>
-          </TableRow>
         </TableBody>
       </Table>
       <div className="justify-center flex gap-5">
