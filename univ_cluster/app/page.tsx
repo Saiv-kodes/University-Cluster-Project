@@ -133,19 +133,19 @@ export default function Home() {
   }
   return (<>
   
-  <main className="h-screen z-0">
+  <main className="h-screen z-0 ">
     <NavOption/>
-    <div className="relative">
-    <Card className="relative brightness-50">
+    <div className="relative rounded-sm">
+    <Card className="relative brightness-50 rounded-sm">
       <Carousel plugins={[
       Autoplay({
         delay: 2000,
       }),
     ]}>
-        <CarouselContent>
+        <CarouselContent >
           {images.map((item, index) => (
-            <CarouselItem key={index} className="w-screen h-[87.5vh] relative contain">
-              <Image layout="fill" className="p-0 " src={item} alt="" />
+            <CarouselItem key={index} className="w-screen h-[87.5vh] relative contain ">
+              <Image layout="fill" className="p-0 rounded-lg" src={item} alt="" />
             </CarouselItem>
           ))}
         </CarouselContent>

@@ -1,16 +1,20 @@
 import { NavOption } from "@/components/navOption";
 import { DataTable } from "./Datable";
-import { columns,Instrument } from "./columns";
+import { columns } from "./columns";
 import prisma from "@/lib/prisma";
 
-async function getPosts(){
+
+
+
+
+async function getInstruments(){
   const data = await prisma.instrument.findMany()
   return data;
 }
 
 
-export default async function SDP(){
-  const data=await getPosts();
+export default async function Instrument(){
+  const data=await getInstruments();
   return<>
     <NavOption/>
     <section>

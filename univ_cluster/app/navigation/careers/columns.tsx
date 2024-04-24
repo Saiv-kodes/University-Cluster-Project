@@ -11,11 +11,16 @@ export interface Job{
   description:string;
   professor:string;
   discipline:string;
-
+  instituteId:string;
 }
 
 
 export const columns: ColumnDef<Job>[] = [
+  {
+    accessorKey: "instituteId",
+    header: ()=><span className="hidden">Placeholder</span>,
+    
+  },
   
   {
     accessorKey: "vacancy",

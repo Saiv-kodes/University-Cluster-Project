@@ -24,6 +24,8 @@ import { Card, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger,SelectValue } from "@/components/ui/select";
 import { images } from "@/app/images";
 import { useState } from "react"
+import { institutes } from "../institutes"
+
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -36,6 +38,7 @@ export function DataTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   const [columnFilters,setColumnFilters]=useState<ColumnFiltersState>([]);
   const [filterItem,setFilterItem]=useState<string>("");
+  const [id,setId]=useState<number>(-1);
 
   const table = useReactTable({
     data,
@@ -70,7 +73,10 @@ export function DataTable<TData, TValue>({
     </div>
     <div className="flex gap-2 container mx-auto">
      
-      <Select>
+      <Select  onValueChange={(value)=>{
+        setId(institutes[value]);
+        
+      }}>
         <SelectTrigger  className=" max-w-[20%]">
           <SelectValue placeholder={<span className="text-gray-400 ">Select Institute</span>}></SelectValue>
         </SelectTrigger>
@@ -111,7 +117,7 @@ export function DataTable<TData, TValue>({
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header,idx) => {
                 return (
-                  <TableHead className={`${idx===3?"test:hidden":""}`} key={header.id}>
+                  <TableHead className={`${idx===3?"test:hidden":""} ${idx===0?"hidden":""}`} key={header.id}>
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -130,10 +136,10 @@ export function DataTable<TData, TValue>({
               <TableRow
               key={row.id}
               data-state={row.getIsSelected() && "selected"}
-              className={``}
-              >
+              className={`${row.getValue("instituteId")!=JSON.stringify(id)?"hidden":""}`}  
+                          >
                 {row.getVisibleCells().map((cell,idx) => (
-                  <TableCell key={cell.id} className={`${idx===3?"test:hidden":""}`}>
+                  <TableCell key={cell.id} className={`${idx===3?"test:hidden":""} ${idx===0?"hidden":""}`}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}

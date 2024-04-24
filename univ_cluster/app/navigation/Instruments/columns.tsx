@@ -4,15 +4,24 @@ import { ColumnDef } from "@tanstack/react-table"
 import { Sheet, SheetContent, SheetFooter, SheetTrigger } from "@/components/ui/sheet";
 import { CardTitle } from "@/components/ui/card";
 
-export type Instrument = {
+export type Instrument= {
   id: number;
-  instrument:React.ReactNode;
-  description:React.ReactNode;
-  image:string;
+  instrument: string;
+  description: string;
+  image: string;
+  instituteId: string;
 }
 
 
 export const columns: ColumnDef<Instrument>[] = [
+
+  
+  
+  {
+    accessorKey: "instituteId",
+    header: ()=><span className="hidden">Placeholder</span>,
+    
+  },
   {
     accessorKey: "image",
     header: ()=><span className="font-bold">Glimpse</span>,
@@ -25,7 +34,7 @@ export const columns: ColumnDef<Instrument>[] = [
   },
   {
     accessorKey: "instrument",
-    header: ()=><span className="font-bold">Instument</span>,
+    header: ()=><span className="font-bold">Instrument</span>,
     
   },
   {

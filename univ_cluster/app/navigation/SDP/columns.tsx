@@ -17,6 +17,11 @@ export type Program = {
 
 export const columns: ColumnDef<Program>[] = [
   {
+    accessorKey: "instituteId",
+    header: ()=><span className="hidden">Placeholder</span>,
+    
+  },
+  {
     accessorKey: "program",
     header: ()=><span className="font-bold">Program</span>,
 

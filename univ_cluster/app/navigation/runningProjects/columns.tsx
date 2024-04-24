@@ -13,11 +13,16 @@ export type Proj = {
   discipline:string;
   professor:string;
   image:string
-
+  instituteId:string
 }
 
 
 export const columns: ColumnDef<Proj>[] = [
+  {
+    accessorKey: "instituteId",
+    header: ()=><span className="hidden">Placeholder</span>,
+    
+  },
   {
     accessorKey: "image",
     header: ()=><span className="font-bold">Glimpse</span>,
