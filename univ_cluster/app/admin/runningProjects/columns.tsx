@@ -10,9 +10,9 @@ export type Proj = {
   id: number;
   title:React.ReactNode;
   description:React.ReactNode;
-  discipline:string;
+  discipline:string; 
   professor:string;
-  image:string
+  image:File|string
   instituteId:string
 }
 
@@ -79,9 +79,9 @@ export const columns: ColumnDef<Proj>[] = [
           <div className="flex justify-start font-bold w-full">Discipline:<span className="font-normal">{discipline}</span></div>
 
         </SheetContent>
-       
       </Sheet>
-    }
-  },
+      }
+    },
+    
   
 ]

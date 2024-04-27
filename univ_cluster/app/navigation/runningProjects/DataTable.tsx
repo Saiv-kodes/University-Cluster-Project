@@ -150,17 +150,14 @@ export function DataTable<TData, TValue>({
               </TableCell>
             </TableRow>
           )}
-          <TableRow className={`${id===-1?"hidden":""}`}>
-            <TableCell>
-              
-            </TableCell>
-          </TableRow>
+
         </TableBody>
       </Table>
       <div className="justify-center flex gap-5">
 
         <Button className="bg-blue-400" onClick={()=>{table.previousPage()}}>Previous</Button>
         <Button className="bg-blue-400" onClick={()=>{table.nextPage()}}>Next</Button>
+        
       </div>
     </div>
     </>

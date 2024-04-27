@@ -25,6 +25,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger,SelectValue } from "@/
 import { images } from "@/app/images";
 import { useState } from "react"
 import { institutes } from "@/app/navigation/institutes"
+import Link from "next/link"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -140,6 +141,12 @@ export function DataTable<TData, TValue>({
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
+                <TableCell><Button onClick={()=>{
+                  fetch("/api/addProj",{
+                    method:"delete",
+                    body:row.id
+                  })
+                }} variant={"destructive"}>Delete</Button></TableCell>
               </TableRow>
             ))
           ) : (
@@ -148,13 +155,14 @@ export function DataTable<TData, TValue>({
                 No results.
               </TableCell>
             </TableRow>
-          )}
+          )} 
         </TableBody>
       </Table>
       <div className="justify-center flex gap-5">
 
         <Button className="bg-blue-400" onClick={()=>{table.previousPage()}}>Previous</Button>
         <Button className="bg-blue-400" onClick={()=>{table.nextPage()}}>Next</Button>
+        <Link href="./runningProjects/addProj"><Button className={`${id===-1?"hidden":""}`}>+ Add Project</Button></Link>
       </div>
     </div>
     </>
