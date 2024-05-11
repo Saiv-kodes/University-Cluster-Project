@@ -46,10 +46,10 @@ export default function Login() {
               <div>
 
                 <Label>Password:</Label>
-                <Input></Input>
+                <Input type="password"></Input>
               </div>
 
-              <Button className="w-full">Login</Button>
+              <Link href="/admin/runningProjects"> <Button className="w-full">Login</Button> </Link>
               <Button variant="outline" className="w-full bg-white">Login with Google</Button>
             </div>
           </div>

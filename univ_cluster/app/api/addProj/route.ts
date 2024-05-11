@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
   const newPath='/uploaded/'+image.name
   writeFile(path, buffer,(err)=>{
     if(err) throw(err)
-  })
+  })      
   
 
 
@@ -46,16 +46,18 @@ export async function POST(request: NextRequest) {
   
   
 
-  return NextResponse.json({ result })
+  return NextResponse.redirect('http://localhost:3000/admin/runningProjects');
 }
 
 export async function DELETE(request:NextRequest){
-  console.log("WASSUP NIGGA")
-  // const res=await request.json();
+  const res=await request.json();
+  console.log(res)
 
-  // const result=await prisma.proj.delete({
-  //   where:{
-  //     id:res.id
-  //   }
-  // })
+  const result=await prisma.proj.delete({
+    where:{
+      id:res
+    }
+  })
+
+  return NextResponse.json({ result })
 }

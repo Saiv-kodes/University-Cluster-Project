@@ -101,12 +101,7 @@ export function AdminNav() {
             </DropdownMenuContent>
           </DropdownMenu>
           <nav className="md:min-h-[13vh] flex-col bg-[#F7F7F7] gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-8 md:text-sm lg:gap-6">
-          <Link
-            href="/admin/home"
-            className="text-muted-foreground transition-colors hover:text-foreground text-center"
-          >
-            Home
-          </Link>
+          
           <Link
             href="/admin/runningProjects"
             className="text-muted-foreground transition-colors hover:text-foreground text-center"

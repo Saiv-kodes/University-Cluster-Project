@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { NavOption } from "@/components/navOption";
+import { AdminNav } from "@/components/adminNav";
 import { DataTable } from "./DataTable";
 import { columns } from "./columns";
 
@@ -14,7 +14,7 @@ async function getProj(){
 export default async function Run(){
   const data=await getProj();
   return <>
-    <NavOption/>
+    <AdminNav/>
     <div>
       <DataTable columns={columns} data={data} />
     </div>

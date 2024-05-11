@@ -24,6 +24,11 @@ export const columns: ColumnDef<Proj>[] = [
     
   },
   {
+    accessorKey: "id",
+    header: ()=><span className="hidden">Placeholder</span>,
+    
+  },
+  {
     accessorKey: "image",
     header: ()=><span className="font-bold">Glimpse</span>,
 
@@ -71,12 +76,12 @@ export const columns: ColumnDef<Proj>[] = [
         <SheetTrigger className="w-[60px] h-[45px] bg-black text-white rounded-sm">
           View
         </SheetTrigger>
-        <SheetContent className="sm:max-w-none sm:w-3/4 w-full flex flex-col items-center">
+        <SheetContent className="sm:max-w-none w-full flex flex-col items-center">
           <CardTitle className="w-full text-center">{title}</CardTitle>
-          <Image width={100} height={100} className="rounded-sm max-w-[200px] max-h-[200px]" src={image} alt=""></Image>
+          <Image width={100} height={100} className="rounded-sm w-[200px] h-[200px]" src={image} alt=""></Image>
           <p>{description}</p>
-          <div className="flex justify-start font-bold w-full">Supervisor:<span className="font-normal">{professor}</span></div>
-          <div className="flex justify-start font-bold w-full">Discipline:<span className="font-normal">{discipline}</span></div>
+          <div className="flex justify-start font-bold w-full"><span className="font-normal"><strong>Supervisor:</strong> {professor}</span></div>
+          <div className="flex justify-start font-bold w-full"><span className="font-normal"><strong>Discipline:</strong> {discipline}</span></div>
 
         </SheetContent>
       </Sheet>
