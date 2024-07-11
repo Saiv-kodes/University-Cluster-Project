@@ -4,6 +4,8 @@
 
 # (in process of being built)
 Things left-
-Adding authentication
+- Adding authentication
 
-Collecting Data from institutes.
+- Collecting Data from institutes.
+
+- Deployment
