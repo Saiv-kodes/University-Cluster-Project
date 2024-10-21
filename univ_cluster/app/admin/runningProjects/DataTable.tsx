@@ -34,7 +34,8 @@ import { useState } from "react";
 import { institutes } from "@/app/navigation/institutes";
 import Link from "next/link";
 
-import { Sheet,SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useRouter } from "next/navigation";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -45,6 +46,7 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const router = useRouter();
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [filterItem, setFilterItem] = useState<string>("");
   const [id, setId] = useState<number>(1);
@@ -96,16 +98,12 @@ export function DataTable<TData, TValue>({
 
   return (
     <>
-    
-    <div className="h-[60px] flex items-center w-[100vw] bg-blue-400">
+      <div className="h-[60px] flex items-center w-[100vw] bg-blue-400">
         <CardTitle className="h-full  flex items-center flex-1 justify-center text-white">
           Running Projects
         </CardTitle>
       </div>
       <div className="flex gap-2 container mx-auto">
-
-        
-
         <Select
           onValueChange={(value) => {
             handleSelectChange(value);
@@ -116,20 +114,26 @@ export function DataTable<TData, TValue>({
               placeholder={
                 <span className="text-gray-400 ">Search by....</span>
               }
-            >
-            </SelectValue>
+            ></SelectValue>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem key={1} value="discipline">Discipline</SelectItem>
-            <SelectItem key={2} value="professor">Professor</SelectItem>
-            <SelectItem key={3} value="title">Title</SelectItem>
+            <SelectItem key={1} value="discipline">
+              Discipline
+            </SelectItem>
+            <SelectItem key={2} value="professor">
+              Professor
+            </SelectItem>
+            <SelectItem key={3} value="title">
+              Title
+            </SelectItem>
           </SelectContent>
         </Select>
 
         <Input
           placeholder={"Please enter " + filterItem}
-          value={(table.getColumn(filterItem)?.getFilterValue() as string) ??
-            ""}
+          value={
+            (table.getColumn(filterItem)?.getFilterValue() as string) ?? ""
+          }
           onChange={(event) => {
             table.getColumn(filterItem)?.setFilterValue(event.target.value);
           }}
@@ -148,10 +152,12 @@ export function DataTable<TData, TValue>({
                       } ${idx === 0 || idx === 1 ? "hidden" : ""}`}
                       key={header.id}
                     >
-                      {header.isPlaceholder ? null : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
-                      )}
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                     </TableHead>
                   );
                 })}
@@ -159,57 +165,57 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length
-              ? (
-                table.getRowModel().rows.map((row, idx) => (
-                  <TableRow
-                    key={row.id}
-                    data-state={row.getIsSelected() && "selected"}
-                    className={`${
-                      row.getValue("instituteId") != JSON.stringify(id)
-                        ? "hidden"
-                        : ""
-                    }`}
-                  >
-                    {row.getVisibleCells().map((cell, idx) => (
-                      <TableCell
-                        key={cell.id}
-                        className={`${
-                          idx === 2 || idx === 4 ? "test:hidden" : ""
-                        } ${idx === 0 || idx === 1 ? "hidden" : ""}`}
-                      >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </TableCell>
-                    ))}
-                    <TableCell>
-                      <Button
-                        onClick={() => {
-                          fetch("/api/addProj", {
-                            method: "delete",
-                            body: row.getValue("id"),
-                          });
-                        }}
-                        variant={"destructive"}
-                      >
-                        Delete
-                      </Button>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row, idx) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                  className={`${
+                    row.getValue("instituteId") != JSON.stringify(id)
+                      ? "hidden"
+                      : ""
+                  }`}
+                >
+                  {row.getVisibleCells().map((cell, idx) => (
+                    <TableCell
+                      key={cell.id}
+                      className={`${
+                        idx === 2 || idx === 4 ? "test:hidden" : ""
+                      } ${idx === 0 || idx === 1 ? "hidden" : ""}`}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </TableCell>
-                  </TableRow>
-                ))
-              )
-              : (
-                <TableRow>
-                  <TableCell
-                    colSpan={columns.length}
-                    className="h-24 text-center"
-                  >
-                    No results.
+                  ))}
+                  <TableCell>
+                    <Button
+                      onClick={() => {
+                        fetch("/api/addProj", {
+                          method: "delete",
+                          body: row.getValue("id"),
+                        }).then(() => {
+                          router.refresh();
+                        });
+                      }}
+                      variant={"destructive"}
+                    >
+                      Delete
+                    </Button>
                   </TableCell>
                 </TableRow>
-              )}
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
         <div className="justify-center flex gap-5">
@@ -231,12 +237,16 @@ export function DataTable<TData, TValue>({
           </Button>
           <Sheet>
             <SheetTrigger
-              className={`${id === -1 ? "hidden" : "bg-black text-white rounded-sm px-3 text-sm "}`}
+              className={`${
+                id === -1
+                  ? "hidden"
+                  : "bg-black text-white rounded-sm px-3 text-sm "
+              }`}
             >
               + Add Project
             </SheetTrigger>
             <SheetContent className="w-screen sm:max-w-none p-0">
-              <main className="w-screen h-screen oui">
+              <main className="w-screen h-screen bg-blue-200 ">
                 <CardTitle className="w-full text-center text-4xl text-gray-700 flex items-center justify-center h-[10vh]">
                   Add New Project
                 </CardTitle>
@@ -249,16 +259,14 @@ export function DataTable<TData, TValue>({
                     onChange={(e) => {
                       setTitle(e.target.value);
                     }}
-                  >
-                  </Input>
+                  ></Input>
 
                   <span className="font-semibold">Description:</span>
                   <Textarea
                     onChange={(e) => {
                       setDescription(e.target.value);
                     }}
-                  >
-                  </Textarea>
+                  ></Textarea>
                   <div className="flex">
                     <span className="font-semibold flex-1">Discipline:</span>
                     <span className="font-semibold flex-1">
@@ -271,14 +279,12 @@ export function DataTable<TData, TValue>({
                       onChange={(e) => {
                         setDiscipline(e.target.value);
                       }}
-                    >
-                    </Input>
+                    ></Input>
                     <Input
                       onChange={(e) => {
                         setProfessor(e.target.value);
                       }}
-                    >
-                    </Input>
+                    ></Input>
                   </div>
 
                   <span className="font-semibold">Image:</span>
@@ -287,17 +293,16 @@ export function DataTable<TData, TValue>({
                     onChange={(e) => {
                       setImage(e.target.files?.[0]);
                     }}
-                  >
-                  </Input>
-                  <Button className="w-full" type="submit">Submit</Button>
+                  ></Input>
+                  <Button className="w-full" type="submit">
+                    Submit
+                  </Button>
                 </form>
               </main>
             </SheetContent>
           </Sheet>
         </div>
       </div>
-
-  
-          </>
+    </>
   );
 }

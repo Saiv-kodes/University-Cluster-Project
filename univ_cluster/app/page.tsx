@@ -17,7 +17,6 @@ import { NavOption } from "@/components/navOption";
 
 import {
   IconArrowWaveRightUp,
-  IconBoxAlignRightFilled,
   IconBoxAlignTopLeft,
   IconClipboardCopy,
   IconFileBroken,
@@ -26,8 +25,7 @@ import {
 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import BentoComp from "./bentoComp";
-import {images} from "@/app/images"
-
+import { images } from "@/app/images";
 
 type EventType = {
   title: string;
@@ -44,11 +42,10 @@ export default function Home() {
   const colleges: string[] = ["iit", "iim"];
   const backgrounds = [iit, iim, aiims, bgsbu];
   const Skeleton = () => (
-    <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100">
-    </div>
+    <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
   );
   const events: EventsType = {
-    "iit": [
+    iit: [
       {
         title: "The Dawn of Innovation",
         description:
@@ -88,7 +85,7 @@ export default function Home() {
         icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
       },
     ],
-    "iim": [
+    iim: [
       {
         title: "The Dawn of Innovation",
         description:
@@ -160,7 +157,8 @@ export default function Home() {
             </Carousel>
           </Card>
           <CardTitle className="absolute lg:top-1/4 lg:left-2/4 text-6xl text-center lg:right-8 top-1/3 text-white ">
-            Welcome to the official portal for the<br />{" "}
+            Welcome to the official portal for the
+            <br />{" "}
             <span className="text-blue-300">Jammu University cluster</span>
           </CardTitle>
         </div>
@@ -183,28 +181,43 @@ export default function Home() {
             </Carousel>
           </div>
         </div>
-          <div className="md:flex-row w-full flex flex-col h-[500px] bg-muted">
-            <Card className="flex-1  oui">
-              <CardTitle className="text-center pt-3 text-slate-600">Recent Events</CardTitle>
-              <CardContent>
-                
-              </CardContent>
-            </Card>
-            <Card className="flex-1 oui">
-              <CardTitle className="text-center pt-3 text-slate-600">Notifications</CardTitle>
-            </Card>
-          </div>
-
-          <Card className="h-[300px] bg-black backdrop-blur-lg rounded-none border-0 ">
-              <CardTitle className="text-center text-white pt-5">Constituent Colleges</CardTitle>
-              <CardContent className="flex gap-2 pt-16 justify-center">
-
-                {images.map((item:any)=>{
-                  return <Card className="w-[100px] h-[100px] relative"><Image layout="fill" className="rounded-sm p-0" src={item.second} alt=""/></Card>
-                })}
-              </CardContent>
-              <CardFooter className="text-white font-semibold text-center flex justify-center p-0">"Without collaboration our growth is limited to our own perspectives"</CardFooter>
+        <div className="md:flex-row w-full flex flex-col h-[500px] bg-muted">
+          <Card className="flex-1  oui">
+            <CardTitle className="text-center pt-3 text-slate-600">
+              Recent Events
+            </CardTitle>
+            <CardContent></CardContent>
           </Card>
+          <Card className="flex-1 oui">
+            <CardTitle className="text-center pt-3 text-slate-600">
+              Notifications
+            </CardTitle>
+          </Card>
+        </div>
+
+        <Card className="h-[300px] bg-black backdrop-blur-lg rounded-none border-0 ">
+          <CardTitle className="text-center text-white pt-5">
+            Constituent Colleges
+          </CardTitle>
+          <CardContent className="flex gap-2 pt-16 justify-center">
+            {images.map((item: any) => {
+              return (
+                <Card className="w-[100px] h-[100px] relative">
+                  <Image
+                    layout="fill"
+                    className="rounded-sm p-0"
+                    src={item.second}
+                    alt=""
+                  />
+                </Card>
+              );
+            })}
+          </CardContent>
+          <CardFooter className="text-white font-semibold text-center flex justify-center p-0">
+            "Without collaboration our growth is limited to our own
+            perspectives"
+          </CardFooter>
+        </Card>
       </main>
     </>
   );
